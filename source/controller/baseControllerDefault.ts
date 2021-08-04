@@ -60,9 +60,7 @@ export default class BaseControllerDefault extends Default {
     }
   }
 
-  protected errorStatus(
-    error?: string
-  ):
+  protected errorStatus(error?: string):
     | {
         [error: string]: number;
       }
@@ -190,6 +188,22 @@ export default class BaseControllerDefault extends Default {
     // deepcode ignore HTTPSourceWithUncheckedType: <please specify a reason of ignoring this>, deepcode ignore HTTPSourceWithUncheckedType: <please specify a reason of ignoring this>
     if (params && params.filter) selection = params.filter;
     else selection = query as any;
+    console.log('b:', selection);
+    for (const key in selection) {
+      if (Object.prototype.hasOwnProperty.call(selection, key)) {
+        const element = selection[key];
+        const newKey = key.split(/[\s,"'=]+/)[0];
+        console.log(key, newKey);
+        if (typeof element === 'string')
+          selection[newKey] = element.split(/["'=]+/)[0];
+        else selection[newKey] = element;
+        if (key != newKey) {
+          selection[key] = undefined;
+          delete selection[key];
+        }
+      }
+    }
+    console.log('a:', selection);
     return selection;
   }
 
