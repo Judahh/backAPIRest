@@ -9,8 +9,9 @@ import { mockResponse } from './response.mock';
 import { DAODB, Utils } from '@flexiblepersistence/dao';
 
 test('store test, update, select all, select by id test and delete it', async (done) => {
-  const pool = ((DBHandler.getReadHandler() as ServiceHandler)
-    .persistence as DAODB).getPool();
+  const pool = (
+    (DBHandler.getReadHandler() as ServiceHandler).persistence as DAODB
+  ).getPool();
   await Utils.init(pool);
   const handler = DBHandler.getHandler();
   const controller = new TestController(DBHandler.getInit());
@@ -21,10 +22,10 @@ test('store test, update, select all, select by id test and delete it', async (d
     const sentTest2 = new Test();
 
     const store = await controller.store(
-      ({
+      {
         body: sentTest,
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
     // console.log('store:', store);
     const storedTest = store['received'];
@@ -37,20 +38,20 @@ test('store test, update, select all, select by id test and delete it', async (d
     expect(storedTest).toStrictEqual(expectedTest);
 
     const index = await controller.index(
-      ({
+      {
         params: { filter: {} },
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
     // console.log('show:', show);
     const indexTest = index['received'];
     expect(indexTest).toStrictEqual(expectedTest);
 
     const store2 = await controller.store(
-      ({
+      {
         body: sentTest2,
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
     // console.log('store:', store);
     const storedTest2 = store2['received'];
@@ -63,10 +64,10 @@ test('store test, update, select all, select by id test and delete it', async (d
     expect(storedTest2).toStrictEqual(expectedTest2);
 
     const show = await controller.show(
-      ({
+      {
         params: { filter: {} },
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
 
     const showTest = show['received'];
@@ -77,14 +78,14 @@ test('store test, update, select all, select by id test and delete it', async (d
     const sentTest3 = { name: 'Test' };
 
     const update = await controller.update(
-      ({
+      {
         body: sentTest3,
         params: {
           filter: { id: storedTest2.id },
           single: false,
         },
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
     // console.log('storedTest2:', storedTest2);
 
@@ -95,10 +96,10 @@ test('store test, update, select all, select by id test and delete it', async (d
     expect(updatedTest).toStrictEqual(expectedUpdatedTest);
 
     const show2 = await controller.show(
-      ({
+      {
         params: { filter: {} },
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
 
     const showTest2 = show2['received'];
@@ -108,13 +109,49 @@ test('store test, update, select all, select by id test and delete it', async (d
 
     expect(showTest2).toStrictEqual(expectedTests2);
 
+    const showFilter = await controller.show(
+      {
+        params: { filter: { id: storedTest2.id } },
+      } as unknown as Request,
+      mockResponse as unknown as Response
+    );
+
+    const showTestFilter = showFilter['received'];
+    const expectedTestsFilter = updatedTest;
+
+    expect(showTestFilter).toStrictEqual(expectedTestsFilter);
+
+    const showFilter2 = await controller.show(
+      {
+        params: { filter: { 'id sdfasdf': storedTest2.id + '=asdfasdf' } },
+      } as unknown as Request,
+      mockResponse as unknown as Response
+    );
+
+    const showTestFilter2 = showFilter2['received'];
+    const expectedTestsFilter2 = updatedTest;
+
+    expect(showTestFilter2).toStrictEqual(expectedTestsFilter2);
+
+    const showFilter3 = await controller.show(
+      {
+        params: { filter: { 'name sdfasdf': updatedTest.name + '"asdfasdf' } },
+      } as unknown as Request,
+      mockResponse as unknown as Response
+    );
+
+    const showTestFilter3 = showFilter3['received'];
+    const expectedTestsFilter3 = [updatedTest];
+
+    expect(showTestFilter3).toStrictEqual(expectedTestsFilter3);
+
     const deleted = await controller.delete(
-      ({
+      {
         params: {
           filter: { id: storedTest2.id },
         },
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
 
     const deletedTest = deleted['received'];
@@ -124,10 +161,10 @@ test('store test, update, select all, select by id test and delete it', async (d
     expect(deletedTest).toStrictEqual(expectedDeletedTest);
 
     const show3 = await controller.show(
-      ({
+      {
         params: { filter: {} },
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
 
     const showTest3 = show3['received'];
