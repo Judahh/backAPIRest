@@ -123,7 +123,7 @@ test('store test, update, select all, select by id test and delete it', async (d
 
     const showFilter2 = await controller.show(
       {
-        params: { filter: { 'id sdfasdf': storedTest2.id + '=asdfasdf' } },
+        params: { filter: { 'id sdfasdf': storedTest2.id } },
       } as unknown as Request,
       mockResponse as unknown as Response
     );
@@ -135,13 +135,17 @@ test('store test, update, select all, select by id test and delete it', async (d
 
     const showFilter3 = await controller.show(
       {
-        params: { filter: { 'name sdfasdf': updatedTest.name + '"asdfasdf' } },
+        params: {
+          filter: {
+            'name-sdfasdf': updatedTest.name + '" select * from tests --',
+          },
+        },
       } as unknown as Request,
       mockResponse as unknown as Response
     );
 
     const showTestFilter3 = showFilter3['received'];
-    const expectedTestsFilter3 = [updatedTest];
+    const expectedTestsFilter3 = [];
 
     expect(showTestFilter3).toStrictEqual(expectedTestsFilter3);
 
