@@ -191,10 +191,8 @@ export default class BaseControllerDefault extends Default {
     for (const key in selection) {
       if (Object.prototype.hasOwnProperty.call(selection, key)) {
         const element = selection[key];
-        const newKey = key.split(/[\s,"'=]+/)[0];
-        if (typeof element === 'string')
-          selection[newKey] = element.split(/["'=]+/)[0];
-        else selection[newKey] = element;
+        const newKey = key.split(/[\s,"'=;\-\/\\]+/)[0];
+        selection[newKey] = element;
         if (key != newKey) {
           selection[key] = undefined;
           delete selection[key];
