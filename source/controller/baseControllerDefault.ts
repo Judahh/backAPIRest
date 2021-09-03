@@ -206,10 +206,12 @@ export default class BaseControllerDefault extends Default {
   formatEvent(request, operation: Operation, singleDefault?: boolean) {
     const params = this.formatParams(request);
     const name = this.formatName();
-    request.headers.pageSize =
-      request.headers.pageSize || request.headers.pagesize;
-    request.headers.numberOfPages =
-      request.headers.numberOfPages || request.headers.numberofpages;
+    if (request?.headers) {
+      request.headers.pageSize =
+        request.headers.pageSize || request.headers.pagesize;
+      request.headers.numberOfPages =
+        request.headers.numberOfPages || request.headers.numberofpages;
+    }
     const event = new Event({
       operation,
       single: this.formatSingle(params, singleDefault),
