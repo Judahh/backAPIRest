@@ -263,6 +263,13 @@ export default class BaseControllerDefault extends Default {
       await this.runMiddlewares(request, response);
       const object = await this.generateObject(useFunction, event);
       const status = this.generateStatus(operation, object);
+      const page = (event as any)?.options?.page;
+      const pageSize =
+        (event as any)?.options?.pagesize || (event as any)?.options?.pageSize;
+      const numberOfPages = (event as any)?.options?.numberOfPages;
+      if (page) response.setHeader('page', page);
+      if (pageSize) response.setHeader('pageSize', pageSize);
+      if (numberOfPages) response.setHeader('numberOfPages', numberOfPages);
       response.status(status).json(object);
       return response;
     } catch (error) {
