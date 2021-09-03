@@ -206,6 +206,10 @@ export default class BaseControllerDefault extends Default {
   formatEvent(request, operation: Operation, singleDefault?: boolean) {
     const params = this.formatParams(request);
     const name = this.formatName();
+    request.headers.pageSize =
+      request.headers.pageSize || request.headers.pagesize;
+    request.headers.numberOfPages =
+      request.headers.numberOfPages || request.headers.numberofpages;
     const event = new Event({
       operation,
       single: this.formatSingle(params, singleDefault),
@@ -248,6 +252,16 @@ export default class BaseControllerDefault extends Default {
   ) {
     return this.setObject({}, (await useFunction(event))['receivedItem']);
   }
+
+  protected async generateHeaders(response, event) {
+    const page = (event as any)?.options?.page;
+    const pageSize = (event as any)?.options?.pageSize;
+    const numberOfPages = (event as any)?.options?.numberOfPages;
+
+    if (page) response.setHeader('page', page);
+    if (pageSize) response.setHeader('pageSize', pageSize);
+    if (numberOfPages) response.setHeader('numberOfPages', numberOfPages);
+  }
   protected async generateEvent(
     request,
     response,
@@ -263,13 +277,7 @@ export default class BaseControllerDefault extends Default {
       await this.runMiddlewares(request, response);
       const object = await this.generateObject(useFunction, event);
       const status = this.generateStatus(operation, object);
-      const page = (event as any)?.options?.page;
-      const pageSize =
-        (event as any)?.options?.pagesize || (event as any)?.options?.pageSize;
-      const numberOfPages = (event as any)?.options?.numberOfPages;
-      if (page) response.setHeader('page', page);
-      if (pageSize) response.setHeader('pageSize', pageSize);
-      if (numberOfPages) response.setHeader('numberOfPages', numberOfPages);
+      await this.generateHeaders(response, event);
       response.status(status).json(object);
       return response;
     } catch (error) {
