@@ -57,6 +57,7 @@ export default class BaseControllerDefault extends Default {
       }
       return response;
     } catch (error) {
+      console.error(error);
       return new Promise(() => this.generateError(res, error));
     }
   }
@@ -283,6 +284,7 @@ export default class BaseControllerDefault extends Default {
       response.status(status).json(object);
       return response;
     } catch (error) {
+      console.error(error);
       return this.generateError(response, error);
     }
   }
