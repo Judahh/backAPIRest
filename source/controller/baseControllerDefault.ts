@@ -126,14 +126,16 @@ export default class BaseControllerDefault extends Default {
     if (error === undefined) error = new MissingMethodError();
     if ((error.message as string).includes('does not exist'))
       error.name = 'NotFound';
+    console.error(error);
+    const message = error.message || error.name;
     if (!this.errorStatus() || this.errorStatus(error.name) === undefined)
       response
         .status(this.errorStatus('UnknownError') as number)
-        .send({ ...error });
+        .send({ ...error, message });
     else
       response
         .status(this.errorStatus(error.name) as number)
-        .send({ ...error });
+        .send({ ...error, message });
     return response;
   }
 
