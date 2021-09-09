@@ -8,6 +8,7 @@ import { ServiceModel, ServiceSimpleModel } from '@flexiblepersistence/service';
 import { Handler, Event, Operation } from 'flexiblepersistence';
 import { settings } from 'ts-mixer';
 import { RouterInitializer } from 'backapi';
+import MissingMethodError from './missingMethodError';
 settings.initFunction = 'init';
 export default class BaseControllerDefault extends Default {
   protected regularErrorStatus: {
@@ -24,6 +25,7 @@ export default class BaseControllerDefault extends Default {
     NotFound: 404,
     MethodNotAllowed: 405,
     UnknownError: 500,
+    MissingMethodError: 500,
   };
   protected method: {
     [method: string]: string;
@@ -121,16 +123,17 @@ export default class BaseControllerDefault extends Default {
   }
 
   protected generateError(response, error) {
+    if (error === undefined) error = new MissingMethodError();
     if ((error.message as string).includes('does not exist'))
       error.name = 'NotFound';
     if (!this.errorStatus() || this.errorStatus(error.name) === undefined)
       response
         .status(this.errorStatus('UnknownError') as number)
-        .send({ error: error.message });
+        .send({ ...error });
     else
       response
         .status(this.errorStatus(error.name) as number)
-        .send({ error: error.message });
+        .send({ ...error });
     return response;
   }
 
