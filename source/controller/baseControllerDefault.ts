@@ -224,7 +224,7 @@ export default class BaseControllerDefault extends Default {
       request.headers.numberOfPages =
         request.headers.numberOfPages || request.headers.numberofpages;
     }
-    console.log(request);
+    // console.log(request);
     const event = new Event({
       operation,
       single: this.formatSingle(request?.headers, singleDefault),
