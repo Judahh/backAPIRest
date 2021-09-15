@@ -89,8 +89,10 @@ test('store test, update, select all, select by id test and delete it', async (d
         body: sentTest3,
         params: {
           filter: { id: storedTest2.id },
-          single: false,
         },
+        headers: {
+          single: false,
+        }
       } as unknown) as Request,
       (mockResponse as unknown) as Response
     );
