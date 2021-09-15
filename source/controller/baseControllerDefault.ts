@@ -170,7 +170,7 @@ export default class BaseControllerDefault extends Default {
   }
 
   formatParams(request) {
-    return request['params'];
+    return request['params'] || request.query;
   }
 
   formatQuery(request) {
@@ -181,10 +181,16 @@ export default class BaseControllerDefault extends Default {
   formatSingle(params?, singleDefault?: boolean) {
     //  deepcode ignore HTTPSourceWithUncheckedType: params do not exist on next
     let single;
-    if (params) {
+    if (params && params.single !== undefined && params.single !== null) {
+      if (typeof params.single === 'string' || params.single instanceof String) {
+        params.single = params.single.toLowerCase() === 'true' ||
+        params.single.toLowerCase() === '1';
+      } else {
+        params.single = params.single === true ||
+        params.single === 1;
+      }
       single = params.single as boolean;
     }
-    // console.log(single);
     if (singleDefault !== undefined && single === undefined)
       single = singleDefault;
     return single;
@@ -218,9 +224,10 @@ export default class BaseControllerDefault extends Default {
       request.headers.numberOfPages =
         request.headers.numberOfPages || request.headers.numberofpages;
     }
+    console.log(request);
     const event = new Event({
       operation,
-      single: this.formatSingle(params, singleDefault),
+      single: this.formatSingle(request?.headers, singleDefault),
       content: this.formatContent(request),
       selection: this.formatSelection(params, this.formatQuery(request)),
       name,
