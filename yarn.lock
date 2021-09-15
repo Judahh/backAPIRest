@@ -326,9 +326,9 @@
     strip-json-comments "^3.1.1"
 
 "@flexiblepersistence/dao@latest":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@flexiblepersistence/dao/-/dao-0.4.1.tgz#e3b458e9fd316ab362cc29d0f34d19bf6ac146d7"
-  integrity sha512-nzdCL2KkpyE2jvNJMV8Y36TWYXxBxaYMFNrtFS4ShmR7XySbRD9oxM8LDgWRMkS74QjJW7lIBeLCZe8t43PUkg==
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@flexiblepersistence/dao/-/dao-0.4.2.tgz#94e98dbdc882bbc5e35fda3d42ba4745eff2aa54"
+  integrity sha512-7/0PN1gfV7QGnoMuchOBrgLpCKJJ7zhZgM6izAo3b7E/ZJEb7aDEmZFdXHvEJgwTm+XzYbPJP2LUI5r0uv343w==
   dependencies:
     bignumber.js latest
     journaly latest
@@ -344,9 +344,9 @@
     ts-mixer latest
 
 "@flexiblepersistence/sequelize@latest":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@flexiblepersistence/sequelize/-/sequelize-0.1.0.tgz#ed3060ce05e766c983e0fec4160c2dfa6e0a6ac2"
-  integrity sha512-EZjvKYJWZFVQDplXmm1GELaOKSps3bzln2s+KXoO2jVAwcHiwJAuYRSDLv05m2bKnaXZE2L1GqrevlPdzjFeLw==
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@flexiblepersistence/sequelize/-/sequelize-0.1.1.tgz#f2c3e832c30a4f4ead579884c6838f4d31a9ffbc"
+  integrity sha512-lqtA7U/QX4yIsjmMIMoyXvTq2dK4m+XBXI22dyDvcfYeHsm1L8/OCsGkOn3kzhNGgKbdyrCdlVrlzYbOxCB1lA==
   dependencies:
     journaly latest
     pg latest
