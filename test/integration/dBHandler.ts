@@ -2,16 +2,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // file deepcode ignore no-any: any needed
 // file deepcode ignore object-literal-shorthand: argh
-import { Handler, MongoDB, PersistenceInfo } from 'flexiblepersistence';
+import {
+  Handler,
+  MongoPersistence,
+  PersistenceInfo,
+} from 'flexiblepersistence';
 import { DatabaseHandler } from 'backapi';
 import TestService from './testService';
 import TestDAO from './testDAO';
 import { eventInfo, readInfo } from './databaseInfos';
 import { ServiceHandler } from '@flexiblepersistence/service';
-import { DAODB, Postgres } from '@flexiblepersistence/dao';
+import { DAOPersistence, Postgres } from '@flexiblepersistence/dao';
 import { Journaly, SenderReceiver } from 'journaly';
 
-class DBHandler extends DatabaseHandler {
+class PersistenceHandler extends DatabaseHandler {
   // async migrate(): Promise<boolean> {
   //   try {
   //     const events = await this.handler.readArray('events', {});
@@ -53,7 +57,7 @@ const database = new PersistenceInfo(readInfo, journaly);
 const eventdatabase = new PersistenceInfo(eventInfo, journaly);
 const pool = new Postgres(database);
 
-const dAO = new DAODB(pool, {
+const dAO = new DAOPersistence(pool, {
   test: new TestDAO(),
 });
 
@@ -64,10 +68,10 @@ const read = new ServiceHandler(
   },
   dAO
 );
-const write = new MongoDB(eventdatabase);
+const write = new MongoPersistence(eventdatabase);
 // console.log(journaly.getSubjects());
 const handler = new Handler(write, read);
-export default DBHandler.getInstance({
+export default PersistenceHandler.getInstance({
   handler: handler,
   journaly: journaly,
-}) as DBHandler;
+}) as PersistenceHandler;

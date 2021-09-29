@@ -2,37 +2,41 @@
 import { ServiceHandler } from '@flexiblepersistence/service';
 import { Pool } from 'pg';
 
-import DBHandler from './sequelizeHandler';
+import PersistenceHandler from './sequelizeHandler';
 import TestController from './testController';
 import { Test } from './test.class';
 import { mockResponse } from './response.mock';
-import { SequelizeDB, Utils } from '@flexiblepersistence/sequelize';
+import { SequelizePersistence, Utils } from '@flexiblepersistence/sequelize';
 
 test('store test, update, select all, select by id test and delete it', async (done) => {
   const pool = new Pool(
-    ((DBHandler.getReadHandler() as ServiceHandler)
-      .persistence as SequelizeDB).getPersistenceInfo()
+    (
+      (PersistenceHandler.getReadHandler() as ServiceHandler)
+        .persistence as SequelizePersistence
+    ).getPersistenceInfo()
   );
   await Utils.init(pool);
   const obj = {};
   obj['test'] = 'test';
-  const handler = DBHandler.getHandler();
-  const controller = new TestController(DBHandler.getInit());
+  const handler = PersistenceHandler.getHandler();
+  const controller = new TestController(PersistenceHandler.getInit());
   try {
-    await ((DBHandler.getReadHandler() as ServiceHandler)
-      .persistence as SequelizeDB)
+    await (
+      (PersistenceHandler.getReadHandler() as ServiceHandler)
+        .persistence as SequelizePersistence
+    )
       .getSequelize()
       .models.Test.sync({ force: true });
-    await handler.getWrite().clear();
+    await handler?.getWrite()?.clear();
 
     const sentTest = new Test();
     const sentTest2 = new Test();
 
     const store = await controller.store(
-      ({
+      {
         body: sentTest,
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
     // console.log('store:', store);
     const storedTest = store['received'];
@@ -45,20 +49,20 @@ test('store test, update, select all, select by id test and delete it', async (d
     expect(storedTest).toStrictEqual(expectedTest);
 
     const index = await controller.index(
-      ({
+      {
         params: { filter: {} },
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
     // console.log('show:', show);
     const indexTest = index['received'];
     expect(indexTest).toStrictEqual(expectedTest);
 
     const store2 = await controller.store(
-      ({
+      {
         body: sentTest2,
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
     // console.log('store:', store);
     const storedTest2 = store2['received'];
@@ -71,10 +75,10 @@ test('store test, update, select all, select by id test and delete it', async (d
     expect(storedTest2).toStrictEqual(expectedTest2);
 
     const show = await controller.show(
-      ({
+      {
         params: { filter: {} },
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
 
     const showTest = show['received'];
@@ -85,16 +89,16 @@ test('store test, update, select all, select by id test and delete it', async (d
     const sentTest3 = { name: 'Test' };
 
     const update = await controller.update(
-      ({
+      {
         body: sentTest3,
         params: {
           filter: { id: storedTest2.id },
         },
         headers: {
           single: false,
-        }
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+        },
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
     // console.log('storedTest2:', storedTest2);
 
@@ -105,10 +109,10 @@ test('store test, update, select all, select by id test and delete it', async (d
     expect(updatedTest).toStrictEqual(expectedUpdatedTest);
 
     const show2 = await controller.show(
-      ({
+      {
         params: { filter: {} },
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
 
     const showTest2 = show2['received'];
@@ -122,12 +126,12 @@ test('store test, update, select all, select by id test and delete it', async (d
     expect(showTest2).toStrictEqual(expectedTests2);
 
     const deleted = await controller.delete(
-      ({
+      {
         params: {
           filter: { id: storedTest2.id },
         },
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
 
     const deletedTest = deleted['received'];
@@ -137,10 +141,10 @@ test('store test, update, select all, select by id test and delete it', async (d
     expect(deletedTest).toStrictEqual(expectedDeletedTest);
 
     const show3 = await controller.show(
-      ({
+      {
         params: { filter: {} },
-      } as unknown) as Request,
-      (mockResponse as unknown) as Response
+      } as unknown as Request,
+      mockResponse as unknown as Response
     );
 
     const showTest3 = show3['received'];
@@ -149,12 +153,12 @@ test('store test, update, select all, select by id test and delete it', async (d
     expect(showTest3).toStrictEqual(expectedTests3);
   } catch (error) {
     console.error(error);
-    await handler.getWrite().clear();
+    await handler?.getWrite()?.clear();
     await Utils.end(pool);
     expect(error).toBe(null);
     done();
   }
-  await handler.getWrite().clear();
+  await handler?.getWrite()?.clear();
   await Utils.end(pool);
   done();
 });
