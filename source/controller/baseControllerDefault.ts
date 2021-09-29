@@ -4,10 +4,10 @@
 // file deepcode ignore no-any: any needed
 // file deepcode ignore object-literal-shorthand: argh
 import { Default } from '@flexiblepersistence/default-initializer';
-import { ServiceModel, ServiceSimpleModel } from '@flexiblepersistence/service';
+import { IService, IServiceSimple } from '@flexiblepersistence/service';
 import { Handler, Event, Operation } from 'flexiblepersistence';
 import { settings } from 'ts-mixer';
-import { RouterInitializer } from 'backapi';
+import { IRouter } from 'backapi';
 import MissingMethodError from './missingMethodError';
 settings.initFunction = 'init';
 export default class BaseControllerDefault extends Default {
@@ -73,11 +73,11 @@ export default class BaseControllerDefault extends Default {
     return this.regularErrorStatus;
   }
 
-  constructor(initDefault?: RouterInitializer) {
+  constructor(initDefault?: IRouter) {
     super(initDefault);
   }
 
-  init(initDefault?: RouterInitializer): void {
+  init(initDefault?: IRouter): void {
     super.init(initDefault);
     if (initDefault) {
       this.handler = initDefault.handler;
@@ -165,7 +165,7 @@ export default class BaseControllerDefault extends Default {
   }
 
   formatContent(request) {
-    const content = request.body as ServiceSimpleModel;
+    const content = request.body as IServiceSimple;
     return content;
   }
 
@@ -262,7 +262,7 @@ export default class BaseControllerDefault extends Default {
     useFunction: (
       // eslint-disable-next-line no-unused-vars
       event: Event
-    ) => Promise<ServiceModel[] | ServiceModel | number | boolean>,
+    ) => Promise<IService[] | IService | number | boolean>,
     event: Event
   ) {
     return this.setObject({}, (await useFunction(event))['receivedItem']);
@@ -284,7 +284,7 @@ export default class BaseControllerDefault extends Default {
     useFunction: (
       // eslint-disable-next-line no-unused-vars
       event: Event
-    ) => Promise<ServiceModel[] | ServiceModel | number | boolean>,
+    ) => Promise<IService[] | IService | number | boolean>,
     singleDefault?: boolean
   ): Promise<Response> {
     try {
