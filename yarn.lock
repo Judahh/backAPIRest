@@ -337,9 +337,9 @@
     ts-mixer latest
 
 "@flexiblepersistence/sequelize@latest":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@flexiblepersistence/sequelize/-/sequelize-1.0.1.tgz#b888f6f12e17c5821cf53f18ba9e7d8a3e5883d7"
-  integrity sha512-W9tCGeXYhkjtRqfJOjBANzecfqwpDbF2cHfowUZH/6C/5nuPZgYeJhVLWrhZZvBzPPS4t+7mIKtctM3VL2Jx2Q==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@flexiblepersistence/sequelize/-/sequelize-1.0.2.tgz#b90634cf7e429006eb643b92d605c4cfbc6bfd8d"
+  integrity sha512-UfnDTBg/17VAQD6dgcTq2Y7c/tFdSSkqBbWZbqaVpqWw7FBG+8Lq0Jd3bRxH5oSOKFI3BqK06Dm1/OhGHO6wwQ==
   dependencies:
     journaly latest
     pg latest
