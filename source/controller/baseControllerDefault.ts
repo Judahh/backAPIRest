@@ -18,6 +18,7 @@ export default class BaseControllerDefault extends Default {
     Error: 400,
     RemoveError: 400,
     RequestError: 400,
+    MongoServerError: 400,
     JsonWebTokenError: 401,
     Unauthorized: 401,
     PaymentRequired: 402,
