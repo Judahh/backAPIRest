@@ -12,6 +12,14 @@ import BaseControllerConnect from './controller/baseControllerConnect';
 import BaseControllerHead from './controller/baseControllerHead';
 import BaseControllerTrace from './controller/baseControllerTrace';
 import BaseControllerOptions from './controller/baseControllerOptions';
+import {
+  sendPost,
+  sendPut,
+  sendGet,
+  sendDelete,
+  authenticate,
+  request,
+} from './utils/request';
 
 export {
   BaseController,
@@ -27,4 +35,10 @@ export {
   BaseControllerTrace,
   BaseControllerOptions,
   Mixin,
+  sendPost,
+  sendPut,
+  sendGet,
+  sendDelete,
+  authenticate,
+  request,
 };
