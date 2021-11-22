@@ -57,7 +57,7 @@
   "devDependencies": {
     "@flexiblepersistence/dao": "latest",
     "@flexiblepersistence/sequelize": "latest",
-    "@types/jest": "26.0.24",
+    "@types/jest": "27.0.3",
     "@types/node": "latest",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
