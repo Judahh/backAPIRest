@@ -2,7 +2,7 @@
   "name": "backapirest",
   "productName": "backAPIRest",
   "author": "Judah Holanda Correia Lima <judahholanda7@gmail.com> (https://judahh.com)",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "private": false,
   "description": "A simple API framework using Flexible Persistence",
   "main": "dist/source/index.js",
@@ -47,16 +47,16 @@
   "dependencies": {
     "@flexiblepersistence/default-initializer": "latest",
     "@flexiblepersistence/service": "latest",
-    "pg": "latest",
+    "axios": "latest",
     "backapi": "latest",
     "flexiblepersistence": "latest",
     "journaly": "latest",
+    "pg": "latest",
     "ts-mixer": "latest"
   },
   "devDependencies": {
-    "@flexiblepersistence/sequelize": "latest",
     "@flexiblepersistence/dao": "latest",
-    "sequelize": "latest",
+    "@flexiblepersistence/sequelize": "latest",
     "@types/jest": "26.0.24",
     "@types/node": "latest",
     "@typescript-eslint/eslint-plugin": "latest",
@@ -68,6 +68,7 @@
     "eslint-plugin-prettier": "latest",
     "jest": "26.6.2",
     "prettier": "latest",
+    "sequelize": "latest",
     "ts-jest": "26.5.6",
     "typescript": "latest"
   }
