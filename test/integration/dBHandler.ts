@@ -75,3 +75,5 @@ export default PersistenceHandler.getInstance({
   handler: handler,
   journaly: journaly,
 }) as PersistenceHandler;
+
+export { read, write, handler };

@@ -2,13 +2,12 @@
 import { ServiceHandler } from '@flexiblepersistence/service';
 import { Pool } from 'pg';
 
-import PersistenceHandler from './sequelizeHandler';
+import PersistenceHandler, { read, write } from './sequelizeHandler';
 import TestController from './testController';
 import { Test } from './test.class';
 import { mockResponse } from './response.mock';
 import { SequelizePersistence, Utils } from '@flexiblepersistence/sequelize';
-
-test('store test, update, select all, select by id test and delete it', async (done) => {
+test('store test, update, select all, select by id test and delete it', async () => {
   const pool = new Pool(
     (
       (PersistenceHandler.getReadHandler() as ServiceHandler)
@@ -156,9 +155,11 @@ test('store test, update, select all, select by id test and delete it', async (d
     await handler?.getWrite()?.clear();
     await Utils.end(pool);
     expect(error).toBe(null);
-    done();
+    read.close();
+    write.close();
   }
   await handler?.getWrite()?.clear();
   await Utils.end(pool);
-  done();
+  read.close();
+  write.close();
 });
