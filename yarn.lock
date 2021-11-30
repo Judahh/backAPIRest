@@ -329,9 +329,9 @@
     ts-mixer latest
 
 "@flexiblepersistence/default-initializer@latest":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@flexiblepersistence/default-initializer/-/default-initializer-1.0.3.tgz#761705360ed1d30d823571f704711feaefa6c653"
-  integrity sha512-d83MaMl9yFMgF/FvT3gESmON9/WWwywp4K2trqP0kvRfb5GKaNDFE9lESyZ9JzwqIG9j4MNyyXIPdWDKIw4nOA==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@flexiblepersistence/default-initializer/-/default-initializer-1.0.4.tgz#36701b079e4a2d61b512f07afe44c68e91085d69"
+  integrity sha512-6MhhIYzsfR5Uw5lSGcmHCXVJ+AmtOKPLZ9zs6H0IMbYrzMx+D1qzDWVm5j/K9e5P2755ZX2csuMKgcyQ0eok3g==
   dependencies:
     journaly latest
     ts-mixer latest
