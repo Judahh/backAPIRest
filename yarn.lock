@@ -347,9 +347,9 @@
     ts-mixer latest
 
 "@flexiblepersistence/service@latest":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@flexiblepersistence/service/-/service-1.0.3.tgz#5995f265ffebbe49988c12b36f9cdf7b7e241a48"
-  integrity sha512-Xkt0sluixaLu4HuRjhFW0PEuuFziiqTdkGNa11yfkRo38dsjk1gttg/ZQ2evfd0eCJJcro5Xv+IvJTVNrxcvkw==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@flexiblepersistence/service/-/service-1.1.1.tgz#cc36e735072dc9b49b55f8f3b1d202bc0177b268"
+  integrity sha512-/WoOkxMvB9vXJGMyATxWjQ9gv4NJCBd2AhwrjQLeiR/9YaqhEprqGlEzoZxurJsCjjCOaJlahimSHwVW75jyNA==
   dependencies:
     journaly latest
     ts-mixer latest
