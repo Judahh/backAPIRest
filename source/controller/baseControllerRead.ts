@@ -6,7 +6,8 @@ import BaseControllerIndex from './baseControllerIndex';
 // @ts-ignore
 export default class BaseControllerRead
   extends Mixin(BaseControllerIndex, BaseControllerShow)
-  implements ControllerReadAdapter {
+  implements ControllerReadAdapter
+{
   async read(request, response): Promise<Response> {
     if (Object.keys(request['query']).length !== 0 && request['query'].id)
       return this.index(request, response);

@@ -6,7 +6,8 @@ import ControllerOptionsAdapter from '../adapter/controllerOptionsAdapter';
 // @ts-ignore
 export default class BaseControllerOptions
   extends BaseControllerDefault
-  implements ControllerOptionsAdapter {
+  implements ControllerOptionsAdapter
+{
   async options(request, response): Promise<Response> {
     return this.generateEvent(
       request,

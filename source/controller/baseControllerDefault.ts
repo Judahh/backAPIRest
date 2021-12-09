@@ -183,12 +183,15 @@ export default class BaseControllerDefault extends Default {
     //  deepcode ignore HTTPSourceWithUncheckedType: params do not exist on next
     let single;
     if (params && params.single !== undefined && params.single !== null) {
-      if (typeof params.single === 'string' || params.single instanceof String) {
-        params.single = params.single.toLowerCase() === 'true' ||
-        params.single.toLowerCase() === '1';
+      if (
+        typeof params.single === 'string' ||
+        params.single instanceof String
+      ) {
+        params.single =
+          params.single.toLowerCase() === 'true' ||
+          params.single.toLowerCase() === '1';
       } else {
-        params.single = params.single === true ||
-        params.single === 1;
+        params.single = params.single === true || params.single === 1;
       }
       single = params.single as boolean;
     }

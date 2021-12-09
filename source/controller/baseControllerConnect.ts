@@ -7,7 +7,8 @@ import ControllerConnectAdapter from '../adapter/controllerConnectAdapter';
 // @ts-ignore
 export default class BaseControllerConnect
   extends BaseControllerDefault
-  implements ControllerConnectAdapter {
+  implements ControllerConnectAdapter
+{
   async connect(request, response): Promise<Response> {
     return this.generateEvent(
       request,

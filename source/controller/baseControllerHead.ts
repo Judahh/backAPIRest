@@ -6,7 +6,8 @@ import ControllerHeadAdapter from '../adapter/controllerHeadAdapter';
 // @ts-ignore
 export default class BaseControllerHead
   extends BaseControllerDefault
-  implements ControllerHeadAdapter {
+  implements ControllerHeadAdapter
+{
   async head(request, response): Promise<Response> {
     return this.generateEvent(
       request,

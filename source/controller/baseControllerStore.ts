@@ -6,7 +6,8 @@ import { Operation } from 'flexiblepersistence';
 // @ts-ignore
 export default class BaseControllerStore
   extends BaseControllerDefault
-  implements ControllerStoreAdapter {
+  implements ControllerStoreAdapter
+{
   // @ts-ignore
   async store(request, response): Promise<Response> {
     return this.generateEvent(

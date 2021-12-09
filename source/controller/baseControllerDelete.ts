@@ -5,7 +5,8 @@ import { Operation } from 'flexiblepersistence';
 // @ts-ignore
 export default class BaseControllerDelete
   extends BaseControllerDefault
-  implements ControllerDeleteAdapter {
+  implements ControllerDeleteAdapter
+{
   async delete(request, response): Promise<Response> {
     return this.generateEvent(
       request,

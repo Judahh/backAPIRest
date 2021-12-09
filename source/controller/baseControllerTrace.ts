@@ -6,7 +6,8 @@ import ControllerTraceAdapter from '../adapter/controllerTraceAdapter';
 // @ts-ignore
 export default class BaseControllerTrace
   extends BaseControllerDefault
-  implements ControllerTraceAdapter {
+  implements ControllerTraceAdapter
+{
   async trace(request, response): Promise<Response> {
     return this.generateEvent(
       request,
