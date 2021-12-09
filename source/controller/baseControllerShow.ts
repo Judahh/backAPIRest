@@ -6,7 +6,8 @@ import { Operation } from 'flexiblepersistence';
 // @ts-ignore
 export default class BaseControllerShow
   extends BaseControllerDefault
-  implements ControllerShowAdapter {
+  implements ControllerShowAdapter
+{
   async show(request, response): Promise<Response> {
     return this.generateEvent(
       request,

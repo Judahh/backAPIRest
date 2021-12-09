@@ -7,7 +7,8 @@ import { Operation } from 'flexiblepersistence';
 // @ts-ignore
 export default class BaseControllerUpdate
   extends BaseControllerDefault
-  implements ControllerUpdateAdapter {
+  implements ControllerUpdateAdapter
+{
   async update(request, response): Promise<Response> {
     return this.generateEvent(
       request,

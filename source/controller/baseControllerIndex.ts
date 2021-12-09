@@ -5,7 +5,8 @@ import { Operation } from 'flexiblepersistence';
 // @ts-ignore
 export default class BaseControllerIndex
   extends BaseControllerDefault
-  implements ControllerIndexAdapter {
+  implements ControllerIndexAdapter
+{
   async index(request, response): Promise<Response> {
     return this.generateEvent(
       request,
