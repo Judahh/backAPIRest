@@ -282,7 +282,7 @@ export default class BaseControllerDefault extends Default {
     if (numberOfPages) response.setHeader('numberOfPages', numberOfPages);
   }
   protected async generateEvent(
-    request,
+    request: { method?: string },
     response,
     operation: Operation,
     useFunction: (
@@ -292,6 +292,12 @@ export default class BaseControllerDefault extends Default {
     singleDefault?: boolean
   ): Promise<Response> {
     try {
+      if (
+        request.method?.toLowerCase() === 'options' ||
+        request.method?.toLowerCase() === 'option'
+      ) {
+        return response.status(200).json({});
+      }
       const event = this.formatEvent(request, operation, singleDefault);
       await this.runMiddlewares(request, response);
       const object = await this.generateObject(useFunction, event);
