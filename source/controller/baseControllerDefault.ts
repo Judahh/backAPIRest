@@ -281,6 +281,31 @@ export default class BaseControllerDefault extends Default {
     if (pageSize) response.setHeader('pageSize', pageSize);
     if (numberOfPages) response.setHeader('numberOfPages', numberOfPages);
   }
+
+  protected async enableOptions(request: { method?: string }, response) {
+    if (
+      request.method?.toLowerCase() === 'options' ||
+      request.method?.toLowerCase() === 'option'
+    ) {
+      if (
+        process.env.CORS_ENABLED?.toLocaleLowerCase() === 'true' ||
+        process.env.ALLOWED_ORIGIN === '*'
+      ) {
+        response.setHeader('Access-Control-Allow-Origin', '*');
+        response.setHeader('Access-Control-Allow-Credentials', 'true');
+        response.setHeader(
+          'Access-Control-Allow-Methods',
+          'GET,HEAD,OPTIONS,POST,PUT'
+        );
+        response.setHeader(
+          'Access-Control-Allow-Headers',
+          'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
+        );
+      }
+      return response.status(200).json({});
+    }
+  }
+
   protected async generateEvent(
     request: { method?: string },
     response,
@@ -292,27 +317,7 @@ export default class BaseControllerDefault extends Default {
     singleDefault?: boolean
   ): Promise<Response> {
     try {
-      if (
-        request.method?.toLowerCase() === 'options' ||
-        request.method?.toLowerCase() === 'option'
-      ) {
-        if (
-          process.env.CORS_ENABLED?.toLocaleLowerCase() === 'true' ||
-          process.env.ALLOWED_ORIGIN === '*'
-        ) {
-          response.setHeader('Access-Control-Allow-Origin', '*');
-          response.setHeader('Access-Control-Allow-Credentials', 'true');
-          response.setHeader(
-            'Access-Control-Allow-Methods',
-            'GET,HEAD,OPTIONS,POST,PUT'
-          );
-          response.setHeader(
-            'Access-Control-Allow-Headers',
-            'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
-          );
-        }
-        return response.status(200).json({});
-      }
+      await this.enableOptions(request, response);
       const event = this.formatEvent(request, operation, singleDefault);
       await this.runMiddlewares(request, response);
       const object = await this.generateObject(useFunction, event);
