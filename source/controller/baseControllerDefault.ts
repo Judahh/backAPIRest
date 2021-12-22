@@ -302,10 +302,12 @@ export default class BaseControllerDefault extends Default {
         );
         response.setHeader(
           'Access-Control-Allow-Headers',
-          'Access-Control-Allow-Headers, Origin, Accept, ' +
-            'X-Requested-With, Content-Type, Access-Control-Request-Method, ' +
-            'Access-Control-Request-Headers,  Authorization, authorization, ' +
-            'page, pageSize, numberOfPages, pagesize, numberofpages'
+          process.env.ALLOWED_HEADERS
+            ? process.env.ALLOWED_HEADERS
+            : 'Access-Control-Allow-Headers, Origin, Accept, ' +
+                'X-Requested-With, Content-Type, Access-Control-Request-Method, ' +
+                'Access-Control-Request-Headers,  Authorization, authorization, ' +
+                'page, pageSize, numberOfPages, pagesize, numberofpages, type'
         );
       }
       response.status(200).json({});
