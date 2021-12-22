@@ -990,14 +990,15 @@ babel-preset-jest@^27.4.0:
     babel-preset-current-node-syntax "^1.0.0"
 
 backapi@latest:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/backapi/-/backapi-1.0.3.tgz#003a1afea119ef83be665195b879a3b12bebdbcc"
-  integrity sha512-UitOOYurqTrQku+FCNWWe7V7GQ+2D2YWQ2j+M+nv5dO3vilZ1DUl9Gui+Tr7WNBL+iPTaK4PgjGm4PJTA9eXkA==
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/backapi/-/backapi-1.1.0.tgz#7a2cec2150c5d456b8380e04146cc7c19be2b563"
+  integrity sha512-099Qnjjt0O/G9Qn/g5cqW0WoJ+DHtRDkjgM+8D+48P6CBQpY9nBj5Ad0OQ+0JCd6sDWq8yNvL49f62ngGU3pGA==
   dependencies:
     "@flexiblepersistence/default-initializer" latest
     "@flexiblepersistence/service" latest
     flexiblepersistence latest
     journaly latest
+    ts-mixer latest
 
 balanced-match@^1.0.0:
   version "1.0.2"
