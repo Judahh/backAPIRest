@@ -282,7 +282,10 @@ export default class BaseControllerDefault extends Default {
     if (numberOfPages) response.setHeader('numberOfPages', numberOfPages);
   }
 
-  protected async enableOptions(request: { method?: string }, response) {
+  protected async enableOptions(
+    request: { method?: string },
+    response
+  ): Promise<boolean> {
     if (
       request.method?.toLowerCase() === 'options' ||
       request.method?.toLowerCase() === 'option'
@@ -302,8 +305,10 @@ export default class BaseControllerDefault extends Default {
           'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
         );
       }
-      return response.status(200).json({});
+      response.status(200).json({});
+      return true;
     }
+    return false;
   }
 
   protected async generateEvent(
@@ -317,7 +322,9 @@ export default class BaseControllerDefault extends Default {
     singleDefault?: boolean
   ): Promise<Response> {
     try {
-      await this.enableOptions(request, response);
+      if (await this.enableOptions(request, response)) {
+        return response;
+      }
       const event = this.formatEvent(request, operation, singleDefault);
       await this.runMiddlewares(request, response);
       const object = await this.generateObject(useFunction, event);
