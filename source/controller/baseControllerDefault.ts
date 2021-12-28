@@ -310,7 +310,7 @@ export default class BaseControllerDefault extends Default {
                 'page, pageSize, numberOfPages, pagesize, numberofpages, pageNumber, ' +
                 'pagenumber, type, token, filter, single, sort, sortBy, sortByDesc, ' +
                 'sortByDescending, sortByAsc, sortByAscending, sortByDescending, ' +
-                'Access-Control-Allow-Origin' +
+                'Access-Control-Allow-Origin'
         );
       }
       response.status(200).json({});
