@@ -306,8 +306,11 @@ export default class BaseControllerDefault extends Default {
             ? process.env.ALLOWED_HEADERS
             : 'Access-Control-Allow-Headers, Origin, Accept, ' +
                 'X-Requested-With, Content-Type, Access-Control-Request-Method, ' +
-                'Access-Control-Request-Headers,  Authorization, authorization, ' +
-                'page, pageSize, numberOfPages, pagesize, numberofpages, type'
+                'Access-Control-Request-Headers,  Authorization, authorization, pages, ' +
+                'page, pageSize, numberOfPages, pagesize, numberofpages, pageNumber, ' +
+                'pagenumber, type, token, filter, single, sort, sortBy, sortByDesc, ' +
+                'sortByDescending, sortByAsc, sortByAscending, sortByDescending, ' +
+                'Access-Control-Allow-Origin' +
         );
       }
       response.status(200).json({});
