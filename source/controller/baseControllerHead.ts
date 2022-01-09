@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import BaseControllerDefault from './baseControllerDefault';
 import { Operation } from 'flexiblepersistence';
-import ControllerHeadAdapter from '../adapter/controllerHeadAdapter';
+import IControllerHead from '../adapter/iControllerHead';
 
 // @ts-ignore
 export default class BaseControllerHead
   extends BaseControllerDefault
-  implements ControllerHeadAdapter
+  implements IControllerHead
 {
   async head(request, response): Promise<Response> {
     return this.generateEvent(

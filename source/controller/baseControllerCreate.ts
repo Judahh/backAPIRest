@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import BaseControllerDefault from './baseControllerDefault';
-import ControllerStoreAdapter from '../adapter/controllerStoreAdapter';
+import IControllerCreate from '../adapter/iControllerCreate';
 import { Operation } from 'flexiblepersistence';
 
 // @ts-ignore
-export default class BaseControllerStore
+export default class BaseControllerCreate
   extends BaseControllerDefault
-  implements ControllerStoreAdapter
+  implements IControllerCreate
 {
   // @ts-ignore
-  async store(request, response): Promise<Response> {
+  async create(request, response): Promise<Response> {
     return this.generateEvent(
       request,
       response,

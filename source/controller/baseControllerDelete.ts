@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import BaseControllerDefault from './baseControllerDefault';
-import ControllerDeleteAdapter from '../adapter/controllerDeleteAdapter';
+import IControllerDelete from '../adapter/iControllerDelete';
 import { Operation } from 'flexiblepersistence';
 // @ts-ignore
 export default class BaseControllerDelete
   extends BaseControllerDefault
-  implements ControllerDeleteAdapter
+  implements IControllerDelete
 {
   async delete(request, response): Promise<Response> {
     return this.generateEvent(

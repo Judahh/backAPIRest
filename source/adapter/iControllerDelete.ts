@@ -1,4 +1,4 @@
 /* eslint-disable no-unused-vars */
-export default interface ControllerDeleteAdapter {
+export default interface IControllerDelete {
   delete(request, response): Promise<Response>;
 }

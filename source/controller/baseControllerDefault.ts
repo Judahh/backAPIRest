@@ -345,4 +345,13 @@ export default class BaseControllerDefault extends Default {
       return this.generateError(response, error);
     }
   }
+
+  async options(request, response): Promise<Response> {
+    return this.generateEvent(
+      request,
+      response,
+      Operation.other,
+      this.event.bind(this)
+    );
+  }
 }

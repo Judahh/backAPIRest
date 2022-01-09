@@ -2,12 +2,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import BaseControllerDefault from './baseControllerDefault';
 import { Operation } from 'flexiblepersistence';
-import ControllerConnectAdapter from '../adapter/controllerConnectAdapter';
+import IControllerConnect from '../adapter/iControllerConnect';
 
 // @ts-ignore
 export default class BaseControllerConnect
   extends BaseControllerDefault
-  implements ControllerConnectAdapter
+  implements IControllerConnect
 {
   async connect(request, response): Promise<Response> {
     return this.generateEvent(
