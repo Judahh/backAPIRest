@@ -991,9 +991,9 @@ babel-preset-jest@^27.4.0:
     babel-preset-current-node-syntax "^1.0.0"
 
 backapi@latest:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/backapi/-/backapi-2.0.3.tgz#119c81f7e2e8882cce00262a0738a39ed3d2a82b"
-  integrity sha512-M3RPhIq1R9/I+SaDoVkO4l67MxEVgr4m9QjdmM6MxMUXGuWAwOhWnQdAJHhyOhZwEHYk4oJNWcj0QGdgErS8tA==
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/backapi/-/backapi-2.0.4.tgz#ce674281ab81ad4c7a98dd3d89fba9c1d2f12024"
+  integrity sha512-OTSWTxznQi/i4l4C85/j1iUyS6q8P63NF6yJ5ZE6lvYb9k1lqF5jYnoIgqmiBXakdj50G50I/eTz8UGt8J+qMg==
   dependencies:
     "@flexiblepersistence/default-initializer" latest
     "@flexiblepersistence/service" latest
@@ -1731,12 +1731,6 @@ flexiblepersistence@latest:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/flexiblepersistence/-/flexiblepersistence-3.0.1.tgz#4dcb73c2269923b9d05fb94b26ad95da71a7e775"
   integrity sha512-focLBSIboOx32YkvPxMed37cheON0WoQyVP0XB8pGS3meywsLqPY3QplRY4+uXAuwl/QhRGkvLGOW8Yb40tjhg==
-  dependencies:
-    "@flexiblepersistence/default-initializer" latest
-    journaly latest
-    mongodb latest
-    mongoose latest
-    pg latest
 
 form-data@^3.0.0:
   version "3.0.1"
@@ -3776,9 +3770,9 @@ v8-compile-cache@^2.0.3:
   integrity sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==
 
 v8-to-istanbul@^8.1.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/v8-to-istanbul/-/v8-to-istanbul-8.1.0.tgz#0aeb763894f1a0a1676adf8a8b7612a38902446c"
-  integrity sha512-/PRhfd8aTNp9Ggr62HPzXg2XasNFGy5PBt0Rp04du7/8GNNSgxFL6WBTkgMKSL9bFjH+8kKEG3f37FmxiTqUUA==
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/v8-to-istanbul/-/v8-to-istanbul-8.1.1.tgz#77b752fd3975e31bbcef938f85e9bd1c7a8d60ed"
+  integrity sha512-FGtKtv3xIpR6BYhvgH8MI/y78oT7d8Au3ww4QIxymrCtZEh5b8gCw2siywE+puhEmuWKDtmfrvF5UlB298ut3w==
   dependencies:
     "@types/istanbul-lib-coverage" "^2.0.1"
     convert-source-map "^1.6.0"
