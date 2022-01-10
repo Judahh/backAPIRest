@@ -1,27 +1,40 @@
-/* eslint-disable @typescript-eslint/no-this-alias */
 import { ServiceHandler } from '@flexiblepersistence/service';
 import { Pool } from 'pg';
 
-import PersistenceHandler, { read, write } from './sequelizeHandler';
+import {
+  read,
+  eventdatabase,
+  Handler,
+  PersistenceHandler,
+  journaly,
+} from './sequelizeHandler';
 import TestController from './testController';
 import { Test } from './test.class';
 import { mockResponse } from './response.mock';
 import { SequelizePersistence, Utils } from '@flexiblepersistence/sequelize';
+import { MongoPersistence } from 'flexiblepersistence';
 test('store test, update, select all, select by id test and delete it', async () => {
+  // console.log(journaly.getSubjects());
+  const write = new MongoPersistence(eventdatabase);
+  const DBHandler = PersistenceHandler.getInstance({
+    handler: new Handler(write, read),
+    journaly: journaly,
+  }) as PersistenceHandler;
+
   const pool = new Pool(
     (
-      (PersistenceHandler.getReadHandler() as ServiceHandler)
+      (DBHandler.getReadHandler() as ServiceHandler)
         .persistence as SequelizePersistence
     ).getPersistenceInfo()
   );
   await Utils.init(pool);
   const obj = {};
   obj['test'] = 'test';
-  const handler = PersistenceHandler.getHandler();
-  const controller = new TestController(PersistenceHandler.getInit());
+  const handler = DBHandler.getHandler();
+  const controller = new TestController(DBHandler.getInit());
   try {
     await (
-      (PersistenceHandler.getReadHandler() as ServiceHandler)
+      (DBHandler.getReadHandler() as ServiceHandler)
         .persistence as SequelizePersistence
     )
       .getSequelize()
@@ -31,7 +44,7 @@ test('store test, update, select all, select by id test and delete it', async ()
     const sentTest = new Test();
     const sentTest2 = new Test();
 
-    const store = await controller.store(
+    const store = await controller.create(
       {
         body: sentTest,
       } as unknown as Request,
@@ -57,7 +70,7 @@ test('store test, update, select all, select by id test and delete it', async ()
     const indexTest = index['received'];
     expect(indexTest).toStrictEqual(expectedTest);
 
-    const store2 = await controller.store(
+    const store2 = await controller.create(
       {
         body: sentTest2,
       } as unknown as Request,

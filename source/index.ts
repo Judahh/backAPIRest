@@ -4,7 +4,7 @@ import BaseController from './controller/baseController';
 import BaseControllerDefault from './controller/baseControllerDefault';
 import BaseControllerDelete from './controller/baseControllerDelete';
 import BaseControllerRead from './controller/baseControllerRead';
-import BaseControllerStore from './controller/baseControllerCreate';
+import BaseControllerCreate from './controller/baseControllerCreate';
 import BaseControllerUpdate from './controller/baseControllerUpdate';
 import BaseControllerConnect from './controller/baseControllerConnect';
 import BaseControllerHead from './controller/baseControllerHead';
@@ -14,8 +14,8 @@ export {
   BaseController,
   BaseControllerDefault,
   BaseControllerDelete,
+  BaseControllerCreate,
   BaseControllerRead,
-  BaseControllerStore,
   BaseControllerUpdate,
   BaseControllerConnect,
   BaseControllerHead,

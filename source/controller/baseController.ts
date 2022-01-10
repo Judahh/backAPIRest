@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import IController from '../adapter/iController';
+import { IController } from 'backapi';
 import { Mixin } from 'ts-mixer';
 import BaseControllerDelete from './baseControllerDelete';
 import BaseControllerStore from './baseControllerCreate';
