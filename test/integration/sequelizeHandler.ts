@@ -2,11 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // file deepcode ignore no-any: any needed
 // file deepcode ignore object-literal-shorthand: argh
-import {
-  Handler,
-  MongoPersistence,
-  PersistenceInfo,
-} from 'flexiblepersistence';
+import { Handler, PersistenceInfo } from 'flexiblepersistence';
 import { DatabaseHandler } from 'backapi';
 import TestService from './testService';
 import { eventInfo, readInfo } from './databaseInfos';
@@ -70,12 +66,5 @@ const read = new ServiceHandler(
   },
   sequelize
 );
-const write = new MongoPersistence(eventdatabase);
-// console.log(journaly.getSubjects());
-const handler = new Handler(write, read);
-export default PersistenceHandler.getInstance({
-  handler: handler,
-  journaly: journaly,
-}) as PersistenceHandler;
 
-export { read, write, handler };
+export { read, eventdatabase, Handler, PersistenceHandler, journaly };

@@ -1,14 +1,25 @@
-/* eslint-disable @typescript-eslint/no-this-alias */
 import { ServiceHandler } from '@flexiblepersistence/service';
-// import dBHandler from './dBHandler';
-
-import DBHandler, { read, write } from './dBHandler';
+import {
+  read,
+  eventdatabase,
+  Handler,
+  PersistenceHandler,
+  journaly,
+} from './dBHandler';
 import TestController from './testController';
 import { Test } from './test.class';
 import { mockResponse } from './response.mock';
 import { DAOPersistence, Utils } from '@flexiblepersistence/dao';
+import { MongoPersistence } from 'flexiblepersistence';
 
 test('store test, update, select all, select by id test and delete it', async () => {
+  // console.log(journaly.getSubjects());
+  const write = new MongoPersistence(eventdatabase);
+  const DBHandler = PersistenceHandler.getInstance({
+    handler: new Handler(write, read),
+    journaly: journaly,
+  }) as PersistenceHandler;
+
   const pool = (
     (DBHandler.getReadHandler() as ServiceHandler).persistence as DAOPersistence
   ).getPool();
@@ -21,7 +32,7 @@ test('store test, update, select all, select by id test and delete it', async ()
     const sentTest = new Test();
     const sentTest2 = new Test();
 
-    const store = await controller.store(
+    const store = await controller.create(
       {
         body: sentTest,
       } as unknown as Request,
@@ -47,7 +58,7 @@ test('store test, update, select all, select by id test and delete it', async ()
     const indexTest = index['received'];
     expect(indexTest).toStrictEqual(expectedTest);
 
-    const store2 = await controller.store(
+    const store2 = await controller.create(
       {
         body: sentTest2,
       } as unknown as Request,
@@ -85,7 +96,7 @@ test('store test, update, select all, select by id test and delete it', async ()
         },
         headers: {
           single: false,
-        }
+        },
       } as unknown as Request,
       mockResponse as unknown as Response
     );
