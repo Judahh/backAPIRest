@@ -302,9 +302,9 @@
     strip-json-comments "^3.1.1"
 
 "@flexiblepersistence/dao@latest":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@flexiblepersistence/dao/-/dao-2.0.0.tgz#c32b58a3475ee7b9cfa5d261e17e334e84095e50"
-  integrity sha512-LojX9T2M8ctQe+Dpau7IDiwiJWb3KQw5/T4IDWGfHAcEywU4VP+C9pg91IylrW3cPJUNp7OwMd1VakcRiJG8cA==
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@flexiblepersistence/dao/-/dao-2.0.2.tgz#3780f4f2bb4a934e2a3aa033037004871c1a61b3"
+  integrity sha512-o6HjrUOK3gSqkIvnIPHHQkhX9x+03VbglwiJzZng46Y+cFEScq7bvptCm09P9nD1ZwhF/IBhoEnlqOm6l+LwuQ==
   dependencies:
     bignumber.js latest
     journaly latest
@@ -317,26 +317,26 @@
     journaly latest
 
 "@flexiblepersistence/pgsql@latest":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@flexiblepersistence/pgsql/-/pgsql-0.1.2.tgz#9529d1ab1c0af09afecc05b239fcad24541dcd58"
-  integrity sha512-HEVqwAZBk7AyDMXEVzMLR4ejFUoErsYy3RP55CM0dOsuUNIGGPBg3/HzJl2WDci06BWHiDxywDcFpNSTHXRKwQ==
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@flexiblepersistence/pgsql/-/pgsql-0.1.4.tgz#3535b02ca6a7f96e6607a8bd4a2483cb4abeba52"
+  integrity sha512-aXd2YxIeBsppMARxVU2XODUHTlNN/clN7PMGb13msCkeXhGc1vnHnUiCbXBlHipWzZQ023+49D8nXEnkXMtQoQ==
   dependencies:
     flexiblepersistence latest
     pg latest
 
 "@flexiblepersistence/sequelize@latest":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@flexiblepersistence/sequelize/-/sequelize-2.0.0.tgz#02cc8df5a57cee979c24da2d8214396d894a94db"
-  integrity sha512-SSae5mVJIPPxZWojXgcLriX1ftoI9IByk6uq+y2wokFYaTZbZ7c4M1Ces6n7pf3LmZJGXEfnx52dQh6nlnVLFw==
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@flexiblepersistence/sequelize/-/sequelize-2.0.1.tgz#9c435b237a5f12718853cc42cdf2e1eecba394aa"
+  integrity sha512-mhyQUgTM8XfnKKXAkOIoY6tZh65wvqXLn8I7wfrsOfGZxqCJjIJuz5n0/OD59dy5mkzsXcfhyb9b6uYin+as+g==
   dependencies:
     journaly latest
     pg latest
     sequelize latest
 
 "@flexiblepersistence/service@latest":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@flexiblepersistence/service/-/service-2.0.0.tgz#97cd9db9d6e0980bc141e0634bb3cada1f55f412"
-  integrity sha512-kaePQcZjaT28eqIEWS1TPlDmjqnckuAXb1rx8ByiLaA3+oNRphN6VeyGtXAfH7hJGC0kfccwrpA8FthLTm1p5g==
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@flexiblepersistence/service/-/service-2.0.1.tgz#a94c2f02f09fc232e76381ec4dc907060d89358a"
+  integrity sha512-APa+V/Btw9naw0HANI9Y/Vx8GSo4iJFkadK/ZX5U/XCREDRJWjJiFha7/fhRPCsqoFAqhsOD709CTnCwOfrQAQ==
   dependencies:
     journaly latest
 
@@ -991,9 +991,9 @@ babel-preset-jest@^27.4.0:
     babel-preset-current-node-syntax "^1.0.0"
 
 backapi@latest:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/backapi/-/backapi-2.0.6.tgz#7fb72dbd7a6ce30a3b3dea69441b391fe1a75474"
-  integrity sha512-5tISjIqCEYV67uz02sSq+22dD0qePvBl/xW7kLw7hd7UUOEuuxnwNSXqxn4DtseggLd35pdwJ/PqKUFsi5TMiA==
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/backapi/-/backapi-2.0.7.tgz#b985310bcdf93038c848f43eb5cb87f0e680140b"
+  integrity sha512-Uafh0qOiP6PuoOC+bOTjH869DErw1or95gMdCFix1P25bACHoDyS15wrXqyUaISYsI+3FEoQ1B+y0s1cb1EWdQ==
   dependencies:
     "@flexiblepersistence/default-initializer" latest
     "@flexiblepersistence/service" latest
@@ -1345,9 +1345,9 @@ dottie@^2.0.2:
   integrity sha512-fmrwR04lsniq/uSr8yikThDTrM7epXHBAAjH9TbeH3rEA8tdCO7mRzB9hdmdGyJCxF8KERo9CITcm3kGuoyMhg==
 
 electron-to-chromium@^1.4.17:
-  version "1.4.43"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.43.tgz#665c0cd8d5e7cce0ba78d90a514c8c813ca3bdbe"
-  integrity sha512-PO3kEfcxPrti/4STbXvCkNIF4fgWvCKl2508e6UI7KomCDffpIfeBZLXsh5DK/XGsjUw3kwq6WEsi0MJTlGAdg==
+  version "1.4.45"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.45.tgz#cf1144091d6683cbd45a231954a745f02fb24598"
+  integrity sha512-czF9eYVuOmlY/vxyMQz2rGlNSjZpxNQYBe1gmQv7al171qOIhgyO9k7D5AKlgeTCSPKk+LHhj5ZyIdmEub9oNg==
 
 emittery@^0.8.1:
   version "0.8.1"
@@ -1728,9 +1728,9 @@ flatted@^3.1.0:
   integrity sha512-8/sOawo8tJ4QOBX8YlQBMxL8+RLZfxMQOif9o0KUKTNTjMYElWPE0r/m5VNFxTRd0NSw8qSy8dajrwX4RYI1Hw==
 
 flexiblepersistence@latest:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/flexiblepersistence/-/flexiblepersistence-3.0.1.tgz#4dcb73c2269923b9d05fb94b26ad95da71a7e775"
-  integrity sha512-focLBSIboOx32YkvPxMed37cheON0WoQyVP0XB8pGS3meywsLqPY3QplRY4+uXAuwl/QhRGkvLGOW8Yb40tjhg==
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/flexiblepersistence/-/flexiblepersistence-3.0.2.tgz#e6027710588ab64edfb2d7064222471d429117a4"
+  integrity sha512-HxggF+/GFTJ7/1bH7xEnVOKKOZskR2oVdJEPL0hoajTEcsjGAwXNolrvldGShV6LCt/MTsC6ZDs/W+bmDg+Zdg==
   dependencies:
     "@flexiblepersistence/default-initializer" latest
     journaly latest
