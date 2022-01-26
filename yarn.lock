@@ -334,9 +334,9 @@
     sequelize latest
 
 "@flexiblepersistence/service@latest":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@flexiblepersistence/service/-/service-2.0.2.tgz#3d7594b55399c9c29f8ad2c5213a921d30120ead"
-  integrity sha512-j4nQI7SSm4r3YdCGI2i4O26Urb1WFyvKRO/HvR1UcLB1SToc4YsmRYGc/yYL1CDlDSIcseK3vQh4XYDGJT6iPw==
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@flexiblepersistence/service/-/service-2.0.3.tgz#ce87e6f9fd2eb7c9835037fb1fd5260f55ce34b5"
+  integrity sha512-3XBNCk/3PDO5dkyVawr2+Hgpol2y387qUBtRJmzo73sgxq/UpSn+rIO0TCJZE170feCwMdNFSNckRbGDxYavGA==
   dependencies:
     journaly latest
 
