@@ -317,9 +317,9 @@
     journaly latest
 
 "@flexiblepersistence/pgsql@latest":
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@flexiblepersistence/pgsql/-/pgsql-0.1.8.tgz#7c739f2d5f010c929d5f3186b1122ee29dd2c61b"
-  integrity sha512-e9+ummS9MQVCDaSG3DZrjM5Ewou9bL8W417+FQNJHWAf0yZVLX63jBpQhPI2v1cvt+biuiYFwAFYAMYmTcorig==
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@flexiblepersistence/pgsql/-/pgsql-0.1.10.tgz#e69683f22a4024d389dfc7b5a3297e2a8c43831c"
+  integrity sha512-CR7Euj9qMFN1QS96DTCWt4kmHNLmQAgbiCwT6pPolu9cWnaaFNvOl7pnabvsywg17DJDi2ryV1mbEtR0kn4T8g==
   dependencies:
     flexiblepersistence latest
     pg latest
