@@ -48,7 +48,7 @@
     "@flexiblepersistence/default-initializer": "latest",
     "@flexiblepersistence/service": "latest",
     "backapi": "latest",
-    "flexiblepersistence": "latest",
+    "flexiblepersistence": "3.0.7",
     "journaly": "latest",
     "pg": "latest",
     "ts-mixer": "latest"

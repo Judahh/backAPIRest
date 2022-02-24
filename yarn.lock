@@ -1712,6 +1712,17 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.5.tgz#76c8584f4fc843db64702a6bd04ab7a8bd666da3"
   integrity sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==
 
+flexiblepersistence@3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/flexiblepersistence/-/flexiblepersistence-3.0.7.tgz#9fcb20f7e56e71ba3d44d72eefc0102be3bf4481"
+  integrity sha512-8ZHCINfqZTm4iI9PxeHU3eVaW3mjYCtQAM5ntl939RnHr6jHbcW0fXtWy+l4J69uw74KaiM2p0BKamfZU9mhvg==
+  dependencies:
+    "@flexiblepersistence/default-initializer" latest
+    journaly latest
+    mongodb latest
+    mongoose latest
+    pg latest
+
 flexiblepersistence@latest:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/flexiblepersistence/-/flexiblepersistence-3.0.4.tgz#2690884eeb3a9911d13403f9a9b8b6dc12b4b0b4"
