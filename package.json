@@ -47,7 +47,7 @@
   "dependencies": {
     "@flexiblepersistence/default-initializer": "latest",
     "@flexiblepersistence/service": "latest",
-    "backapi": "latest",
+    "backapi": "2.0.15",
     "flexiblepersistence": "latest",
     "journaly": "latest",
     "pg": "latest",
