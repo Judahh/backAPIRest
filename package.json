@@ -50,7 +50,7 @@
     "backapi": "latest",
     "flexiblepersistence": "latest",
     "journaly": "latest",
-    "pg": "latest",
+    "pg": "8.7.3",
     "ts-mixer": "latest"
   },
   "devDependencies": {
