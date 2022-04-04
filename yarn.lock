@@ -309,9 +309,12 @@
     strip-json-comments "^3.1.1"
 
 "@flexiblepersistence/dao@latest":
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/@flexiblepersistence/dao/-/dao-2.0.12.tgz#69a20ae0ebf9572f793e1c351676b9784a2f52a9"
-  integrity sha512-HyRFK4leH2yOHdhvgGPkdZc3MMmAmxLLRWBA2w/1g+J/9wmqV8zCGbMZ+XjFRD44YojHabhvGlYXBBxsJ75+hw==
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/@flexiblepersistence/dao/-/dao-2.0.13.tgz#4b9fab630ac07791e42b2208b707707e95481449"
+  integrity sha512-XpnvRpBKL6OSwv1MDFn+2m24pNKmeEmRbjwKAInsbFzonxx+XfJoeKrlLTlLd4eX9HwM61QTrTXyJBu4Atou2Q==
+  dependencies:
+    bignumber.js latest
+    journaly latest
 
 "@flexiblepersistence/default-initializer@latest":
   version "1.0.8"
