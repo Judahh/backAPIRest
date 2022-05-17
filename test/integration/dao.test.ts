@@ -14,8 +14,8 @@ import { eventInfo, readInfo } from './databaseInfos';
 import { DatabaseHandler } from 'backapi';
 let read;
 let write;
-let handler: Handler;
-let dbHandler: DatabaseHandler;
+let handler;
+let dbHandler;
 let journaly;
 describe('1', () => {
   beforeEach(async () => {
