@@ -1,32 +1,76 @@
-import { ServiceHandler } from '@flexiblepersistence/service';
-import {
-  read,
-  eventdatabase,
-  Handler,
-  PersistenceHandler,
-  journaly,
-} from './dBHandler';
 import TestController from './testController';
 import { Test } from './test.class';
 import { mockResponse } from './response.mock';
 import { DAOPersistence, Utils } from '@flexiblepersistence/dao';
-import { MongoPersistence } from 'flexiblepersistence';
+import {
+  Handler,
+  MongoPersistence,
+  PersistenceInfo,
+} from 'flexiblepersistence';
+import { Journaly, SenderReceiver } from 'journaly';
+import { PGSQL } from '@flexiblepersistence/pgsql';
+import TestDAO from './testDAO';
+import { eventInfo, readInfo } from './databaseInfos';
+let read;
+let write;
+let handler;
+let journaly;
+describe('1', () => {
+  beforeEach(async () => {
+    // console.log('beforeEach');
+    if (handler !== undefined) {
+      await handler?.getRead()?.clear();
+      await handler?.getWrite()?.clear();
+    }
+    if (write !== undefined) {
+      await write?.close();
+    }
+    if (read !== undefined) {
+      await read?.close();
+    }
+    journaly = Journaly.newJournaly() as SenderReceiver<any>;
+    const eventDatabase = new MongoPersistence(
+      new PersistenceInfo(eventInfo, journaly)
+    );
+    const database = new PersistenceInfo(readInfo, journaly);
+    write = eventDatabase;
+    const postgres = new PGSQL(database);
+    read = new DAOPersistence(postgres, {
+      test: new TestDAO(),
+    });
+    handler = new Handler(write, read, { isInSeries: true });
+    // await handler?.getRead()?.clear();
+    // await handler?.getWrite()?.clear();
+  });
 
-test('store test, update, select all, select by id test and delete it', async () => {
-  // console.log(journaly.getSubjects());
-  const write = new MongoPersistence(eventdatabase);
-  const DBHandler = PersistenceHandler.getInstance({
-    handler: new Handler(write, read),
-    journaly: journaly,
-  }) as PersistenceHandler;
+  afterEach(async () => {
+    // console.log('afterEach');
+    if (handler !== undefined) {
+      await handler?.getRead()?.clear();
+      await handler?.getWrite()?.clear();
+    }
+    if (read !== undefined) await read?.close();
+    if (write !== undefined) await write?.close();
+    read = undefined;
+    write = undefined;
+    handler = undefined;
+  });
 
-  const pool = (
-    (DBHandler.getReadHandler() as ServiceHandler).persistence as DAOPersistence
-  ).getPool();
-  await Utils.init(pool);
-  const handler = DBHandler.getHandler();
-  const controller = new TestController(DBHandler.getInit());
-  try {
+  afterAll(async () => {
+    // console.log('afterAll');
+    if (handler !== undefined) {
+      await handler?.getRead()?.clear();
+      await handler?.getWrite()?.clear();
+    }
+    if (read !== undefined) await read?.close();
+    if (write !== undefined) await write?.close();
+  });
+
+  test('store test, update, select all, select by id test and delete it', async () => {
+    // console.log(journaly.getSubjects());
+    const pool = read.getPool();
+    await Utils.init(pool);
+    const controller = new TestController(handler.getInit());
     await handler?.getWrite()?.clear();
 
     const sentTest = new Test();
@@ -188,16 +232,5 @@ test('store test, update, select all, select by id test and delete it', async ()
     // console.log('showTest3:', showTest3);
     const expectedTests3 = [storedTest];
     expect(showTest3).toStrictEqual(expectedTests3);
-  } catch (error) {
-    console.error(error);
-    // await handler?.getWrite()?.clear();
-    // await Utils.end(pool);
-    expect(error).toBe(null);
-    // read.close();
-    // write.close();
-  }
-  await handler?.getWrite()?.clear();
-  await Utils.end(pool);
-  // read.close();
-  write.close();
+  });
 });
