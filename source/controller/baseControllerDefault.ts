@@ -8,6 +8,18 @@ export default class BaseControllerDefault extends AbstractControllerDefault {
     status?,
     object?
   ): Promise<void> {
-    return response.status(status).json(object);
+    const cache: any[] = [];
+    const cleanObject = JSON.parse(
+      JSON.stringify(object, (_key, value) => {
+        if (typeof value === 'object' && value !== null) {
+          // Duplicate reference found, discard key
+          if (cache.includes(value)) return;
+          // Store value in our collection
+          cache.push(value);
+        }
+        return value;
+      })
+    );
+    return response.status(status).json(cleanObject);
   }
 }
