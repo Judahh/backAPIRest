@@ -11,9 +11,11 @@ import { Journaly, SenderReceiver } from 'journaly';
 import { PGSQL } from '@flexiblepersistence/pgsql';
 import TestDAO from './testDAO';
 import { eventInfo, readInfo } from './databaseInfos';
+import { DatabaseHandler } from 'backapi';
 let read;
 let write;
-let handler;
+let handler: Handler;
+let dbHandler: DatabaseHandler;
 let journaly;
 describe('1', () => {
   beforeEach(async () => {
@@ -39,6 +41,10 @@ describe('1', () => {
       test: new TestDAO(),
     });
     handler = new Handler(write, read, { isInSeries: true });
+    dbHandler = DatabaseHandler.getInstance({
+      handler: handler,
+      journaly: journaly,
+    }) as DatabaseHandler;
     // await handler?.getRead()?.clear();
     // await handler?.getWrite()?.clear();
   });
@@ -70,7 +76,7 @@ describe('1', () => {
     // console.log(journaly.getSubjects());
     const pool = read.getPool();
     await Utils.init(pool);
-    const controller = new TestController(handler.getInit());
+    const controller = new TestController(dbHandler.getInit());
     await handler?.getWrite()?.clear();
 
     const sentTest = new Test();

@@ -1,8 +1,7 @@
-import { ServiceHandler } from '@flexiblepersistence/service';
 import TestController from './testController';
 import { Test } from './test.class';
 import { mockResponse } from './response.mock';
-import { SequelizePersistence, Utils } from '@flexiblepersistence/sequelize';
+import { Utils } from '@flexiblepersistence/sequelize';
 import {
   Handler,
   MongoPersistence,
@@ -13,9 +12,11 @@ import { PGSQL } from '@flexiblepersistence/pgsql';
 import { DAOPersistence } from '@flexiblepersistence/dao';
 import { eventInfo, readInfo } from './databaseInfos';
 import TestDAO from './testDAO';
+import { DatabaseHandler } from 'backapi';
 let read;
 let write;
-let handler;
+let handler: Handler;
+let dbHandler: DatabaseHandler;
 let journaly;
 describe('1', () => {
   beforeEach(async () => {
@@ -41,6 +42,10 @@ describe('1', () => {
       test: new TestDAO(),
     });
     handler = new Handler(write, read, { isInSeries: true });
+    dbHandler = DatabaseHandler.getInstance({
+      handler: handler,
+      journaly: journaly,
+    }) as DatabaseHandler;
     // await handler?.getRead()?.clear();
     // await handler?.getWrite()?.clear();
   });
@@ -73,15 +78,7 @@ describe('1', () => {
     await Utils.init(pool);
     const obj = {};
     obj['test'] = 'test';
-    const controller = new TestController(handler.getInit());
-
-    await (
-      (handler.getReadHandler() as ServiceHandler)
-        .persistence as SequelizePersistence
-    )
-      .getSequelize()
-      .models.Test.sync({ force: true });
-    await handler?.getWrite()?.clear();
+    const controller = new TestController(dbHandler.getInit());
 
     const sentTest = new Test();
     const sentTest2 = new Test();
