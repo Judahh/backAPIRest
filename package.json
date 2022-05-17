@@ -48,6 +48,7 @@
     "@flexiblepersistence/default-initializer": "latest",
     "@flexiblepersistence/service": "latest",
     "backapi": "latest",
+    "flatted": "latest",
     "flexiblepersistence": "latest",
     "journaly": "latest",
     "pg": "latest",
@@ -55,8 +56,8 @@
   },
   "devDependencies": {
     "@flexiblepersistence/dao": "latest",
-    "@flexiblepersistence/sequelize": "latest",
     "@flexiblepersistence/pgsql": "latest",
+    "@flexiblepersistence/sequelize": "latest",
     "@types/jest": "latest",
     "@types/node": "latest",
     "@typescript-eslint/eslint-plugin": "latest",
