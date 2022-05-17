@@ -60,6 +60,7 @@ describe('1', () => {
     read = undefined;
     write = undefined;
     handler = undefined;
+    dbHandler = undefined;
   });
 
   afterAll(async () => {
