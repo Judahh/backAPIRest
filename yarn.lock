@@ -310,9 +310,9 @@
     journaly latest
 
 "@flexiblepersistence/default-initializer@latest":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@flexiblepersistence/default-initializer/-/default-initializer-1.0.9.tgz#27a90f3183b82d9614f42e82c474dc2cb9efa6c0"
-  integrity sha512-BX14MJt3/WwNh1J/DO9RGeBTvxij1n/l96cv27NwxWA8bvDkX2w+A8fkW3AM4/2c1Jp6x0y3i2j/Zub8APAGjw==
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@flexiblepersistence/default-initializer/-/default-initializer-2.0.0.tgz#8bf63fec5db4fb7b3e6cb03dfeb1bc6e8466b9ac"
+  integrity sha512-NvtqmqkQC1/59+/l5lmH9XoTSc+yS00MaFlsbbp6WZfTKujUj8zrn/n03LC62wvPFWnUbFk0MTA0tF8dJbsF+Q==
   dependencies:
     journaly latest
 
@@ -1692,7 +1692,7 @@ flat-cache@^3.0.4:
     flatted "^3.1.0"
     rimraf "^3.0.2"
 
-flatted@^3.1.0, flatted@^3.2.5:
+flatted@^3.1.0, flatted@latest:
   version "3.2.5"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.5.tgz#76c8584f4fc843db64702a6bd04ab7a8bd666da3"
   integrity sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==
