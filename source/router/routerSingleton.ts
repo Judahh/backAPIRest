@@ -24,6 +24,10 @@ export default class RouterSingleton {
     return this._instance;
   }
 
+  getControllers() {
+    return this.controller;
+  }
+
   getController(
     name?: string
   ):

@@ -1,6 +1,7 @@
 import { Mixin } from 'ts-mixer';
 
 import RouterSingleton from './router/routerSingleton';
+import SimpleApp from './simpleApp';
 
 import BaseController from './controller/baseController';
 import BaseControllerDefault from './controller/baseControllerDefault';
@@ -13,6 +14,7 @@ import BaseControllerHead from './controller/baseControllerHead';
 import BaseControllerTrace from './controller/baseControllerTrace';
 
 export {
+  SimpleApp,
   RouterSingleton,
   BaseController,
   BaseControllerDefault,

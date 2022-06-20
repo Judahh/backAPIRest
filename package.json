@@ -51,6 +51,7 @@
     "flatted": "latest",
     "flexiblepersistence": "latest",
     "journaly": "latest",
+    "dotenv": "latest",
     "pg": "latest",
     "ts-mixer": "latest"
   },
