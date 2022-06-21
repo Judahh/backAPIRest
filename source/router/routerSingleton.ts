@@ -14,8 +14,17 @@ export default class RouterSingleton {
   // eslint-disable-next-line no-unused-vars
   abstract createRoutes(initDefault?: IRouter): void;
   protected static _instance: RouterSingleton;
-
   protected routes;
+  protected routerBase;
+
+  protected constructor(routerBase?) {
+    this.routerBase = routerBase;
+    this.routes = routerBase?.();
+  }
+
+  getRoutes() {
+    return this.routes;
+  }
 
   static getInstance(): RouterSingleton {
     if (!this._instance) {
@@ -36,10 +45,6 @@ export default class RouterSingleton {
     | undefined {
     if (name !== undefined) return this.controller?.[name];
     return this.controller;
-  }
-
-  getRoutes() {
-    return this.routes;
   }
 
   addRoute(route: string, handler: string): void {
