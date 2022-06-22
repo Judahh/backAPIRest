@@ -33,8 +33,10 @@ export default class SimpleApp {
     const port = process.env.PORT || 3000;
 
     this.router?.createRoutes?.(initDefault);
-    await this.execute(this.router);
-    await this.express.use(this.router?.getRoutes?.());
+    await this.execute?.(this.router);
+    const routes = await this.router?.getRoutes?.();
+    console.log('Routes', routes);
+    if (routes) await this.express?.use?.(routes);
     await this.express.listen(port);
     console.log(
       `started server on 0.0.0.0:${port}, url: http://localhost:${port}`
