@@ -1013,9 +1013,9 @@ babel-preset-jest@^28.1.1:
     babel-preset-current-node-syntax "^1.0.0"
 
 backapi@latest:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/backapi/-/backapi-3.0.2.tgz#e47398669f1ed67f16d08e1d87f361947d668a57"
-  integrity sha512-k6Hp10uNpTlLSlhbSh+9XAw4xa5clSy1MIrkmu1zEjmED+T2XmQrJs398LbAwh26cdGbKScxLzeLSRmzCiMpxg==
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/backapi/-/backapi-3.0.3.tgz#2893e79cb5efbcb32c33348647c53a7ba768f46c"
+  integrity sha512-ultuW7R40KK9dg1jswLY/qLK1O3T+BOqH+lQ5qEdy18sotroa7oKEWrHGzawIJco+1Dq3EPg2ZvhDZrkugC9uQ==
   dependencies:
     "@flexiblepersistence/default-initializer" latest
     "@flexiblepersistence/service" latest
@@ -2705,9 +2705,9 @@ mongodb@4.7.0, mongodb@latest:
     saslprep "^1.0.3"
 
 mongoose@latest:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.4.0.tgz#22d6ab436bdf444b833e92faaa53e47b734c15c6"
-  integrity sha512-eBDrueap1Zx3qFrcYylTiqTFlL5iTEaYAxoDF1MSRdipwAzChQRMJve+vxHtxPhI2q5tmf9RYHfZwXfTUHPd3g==
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-6.4.1.tgz#e50e1a92ccf7764f2cc57b5a801a52918c7c3e72"
+  integrity sha512-6a3UmHaC2BYdxZT7qqwORqbxDfAa5HaRMidkA8Ll4Rupnl6R8vRu5Av13jx4DaxgJBpPDo4/K9AXxb+OGSD+5w==
   dependencies:
     bson "^4.6.2"
     kareem "2.4.1"

@@ -8,8 +8,8 @@ export default class BaseControllerDefault extends AbstractControllerDefault {
   protected socketFramework = undefined;
   protected communication = 'rest';
   protected emit(
-    requestOrData?,
-    _responseOrSocket?,
+    _requestOrData?,
+    responseOrSocket?,
     _headers?,
     _operation?: Operation,
     status?,
@@ -27,6 +27,6 @@ export default class BaseControllerDefault extends AbstractControllerDefault {
         return value;
       })
     );
-    return requestOrData.status(status).json(cleanObject);
+    return responseOrSocket.status(status).json(cleanObject);
   }
 }
