@@ -2,8 +2,15 @@ import { Operation } from 'flexiblepersistence';
 import { AbstractControllerDefault } from 'backapi';
 
 export default class BaseControllerDefault extends AbstractControllerDefault {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //@ts-ignore
+  protected abstract restFramework;
+  protected socketFramework = undefined;
+  protected communication = 'rest';
   protected emit(
-    response?,
+    requestOrData?,
+    _responseOrSocket?,
+    _headers?,
     _operation?: Operation,
     status?,
     object?
@@ -20,6 +27,6 @@ export default class BaseControllerDefault extends AbstractControllerDefault {
         return value;
       })
     );
-    return response.status(status).json(cleanObject);
+    return requestOrData.status(status).json(cleanObject);
   }
 }
