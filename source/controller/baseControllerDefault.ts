@@ -10,7 +10,7 @@ export default class BaseControllerDefault extends AbstractControllerDefault {
   protected emit(
     _requestOrData?,
     responseOrSocket?,
-    _headers?,
+    headers?,
     _operation?: Operation,
     status?,
     object?
@@ -27,6 +27,6 @@ export default class BaseControllerDefault extends AbstractControllerDefault {
         return value;
       })
     );
-    return responseOrSocket.status(status).json(cleanObject);
+    return responseOrSocket.send({ headers, body: cleanObject, status });
   }
 }
