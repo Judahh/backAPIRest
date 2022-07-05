@@ -1013,9 +1013,9 @@ babel-preset-jest@^28.1.1:
     babel-preset-current-node-syntax "^1.0.0"
 
 backapi@latest:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/backapi/-/backapi-3.1.2.tgz#a355fd169ff0f764d60ad43374c7bc5aefd7b1be"
-  integrity sha512-qKmQYt4jAsBBBKRlpIRHkwK+s7bpODgJNe2e7yrHeGcnJiI593qpy5jxLUBCxrD7AUOPVRLW7a7JaVznN4Tp3w==
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/backapi/-/backapi-3.1.3.tgz#8052d851109f26aa113aa9302760f16f169393a3"
+  integrity sha512-b9+dbrhALL7RVDIFAsIgsGGCfTnP5FTi3NexTWM6vqyosK6qoiMfzlLfMAf8Q2cwmW2F4ZZCfwMr/O6qIkWfkw==
   dependencies:
     "@flexiblepersistence/default-initializer" latest
     "@flexiblepersistence/service" latest
