@@ -27,6 +27,6 @@ export default class BaseControllerDefault extends AbstractControllerDefault {
         return value;
       })
     );
-    return responseOrSocket.send({ headers, body: cleanObject, status });
+    return responseOrSocket.sendResponse({ headers, body: cleanObject, status });
   }
 }
