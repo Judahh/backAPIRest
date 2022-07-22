@@ -14,7 +14,8 @@ export default class SimpleApp {
     router: RouterSingleton,
     databaseHandler: DatabaseHandler,
     expressBase?,
-    execute?
+    execute?,
+    autoStart = true
   ) {
     this.expressBase = expressBase;
     this.express = expressBase();
@@ -22,11 +23,15 @@ export default class SimpleApp {
     this.middlewares();
     this.router = router;
     this.databaseHandler = databaseHandler;
-    this.routes(databaseHandler?.getInit());
+    if (autoStart) this.routes(databaseHandler?.getInit());
   }
 
   protected middlewares(): void {
     this?.express?.use?.(this.expressBase?.json());
+  }
+
+  protected async migrate(): Promise<boolean> {
+    return this.databaseHandler.getHandler().migrate();
   }
 
   protected async routes(initDefault?: IDatabaseHandler): Promise<void> {
