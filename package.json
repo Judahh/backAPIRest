@@ -48,7 +48,7 @@
     "@flexiblepersistence/default-initializer": "latest",
     "@flexiblepersistence/service": "latest",
     "backapi": "latest",
-    "flatted": "latest",
+    "flatted": "3.2.7",
     "flexiblepersistence": "latest",
     "journaly": "latest",
     "dotenv": "latest",
