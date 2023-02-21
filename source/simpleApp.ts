@@ -4,6 +4,10 @@ import dotEnv from 'dotenv';
 
 dotEnv.config();
 
+const verbose = JSON.parse(
+  (process.env.BACK_API_REST_DEBUG || 'false').toLowerCase()
+);
+
 export default class SimpleApp {
   express;
   expressBase;
@@ -40,7 +44,7 @@ export default class SimpleApp {
     this.router?.createRoutes?.(initDefault);
     await this.execute?.(this.router);
     const routes = await this.router?.getRoutes?.();
-    console.log('Routes', routes);
+    if (verbose) console.log('Routes', routes);
     if (routes) await this.express?.use?.(routes);
     await this.express.listen(port);
     console.log(
