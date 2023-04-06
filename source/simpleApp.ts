@@ -31,7 +31,14 @@ export default class SimpleApp {
   }
 
   protected middlewares(): void {
-    this?.express?.use?.(this.expressBase?.json());
+    let config =
+      JSON.parse(process.env.BACK_API_REST_JSON_CONFIG || '{}') || {};
+    config.limit = process.env.BACK_API_REST_JSON_LIMIT || config.limit;
+    config.extended = process.env.BACK_API_REST_JSON_EXTENDED
+      ? JSON.parse(process.env.BACK_API_REST_JSON_EXTENDED || 'false')
+      : config.extended;
+    if (Object.keys(config).length == 0) config = undefined;
+    this?.express?.use?.(this.expressBase?.json(config));
   }
 
   protected async migrate(): Promise<boolean> {
