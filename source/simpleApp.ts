@@ -52,6 +52,85 @@ export default class SimpleApp {
     await this.execute?.(this.router);
     const routes = await this.router?.getRoutes?.();
     if (verbose) console.log('Routes', routes);
+    if (process.env.REST_API_PROPERTY_ETAG) {
+      let etag = process.env.REST_API_PROPERTY_ETAG;
+      try {
+        etag = JSON.parse(etag);
+      } catch (error) {
+        console.error('Error parsing etag', etag, error);
+      }
+      await this.express?.set?.('etag', etag);
+    }
+    if (process.env.REST_API_PROPERTY_VIEW_ENGINE)
+      await this.express?.set?.(
+        'view engine',
+        process.env.REST_API_PROPERTY_VIEW_ENGINE
+      );
+    if (process.env.REST_API_PROPERTY_VIEW_CACHE)
+      await this.express?.set?.(
+        'view cache',
+        JSON.parse(process.env.REST_API_PROPERTY_VIEW_CACHE || 'false')
+      );
+    if (process.env.REST_API_PROPERTY_JSON_ESCAPE)
+      await this.express?.set?.(
+        'json escape',
+        JSON.parse(process.env.REST_API_PROPERTY_JSON_ESCAPE || 'false')
+      );
+    if (process.env.REST_API_PROPERTY_CASE_SENSITIVE_ROUTING)
+      await this.express?.set?.(
+        'case sensitive routing',
+        JSON.parse(
+          process.env.REST_API_PROPERTY_CASE_SENSITIVE_ROUTING || 'false'
+        )
+      );
+    if (process.env.REST_API_PROPERTY_X_POWERED_BY)
+      await this.express?.set?.(
+        'x-powered-by',
+        JSON.parse(process.env.REST_API_PROPERTY_X_POWERED_BY || 'false')
+      );
+    if (process.env.REST_API_PROPERTY_STRICT_ROUTING)
+      await this.express?.set?.(
+        'strict routing',
+        JSON.parse(process.env.REST_API_PROPERTY_STRICT_ROUTING || 'false')
+      );
+    if (process.env.REST_API_PROPERTY_SUBDOMAIN_OFFSET) {
+      let subdomainOffset = process.env.REST_API_PROPERTY_SUBDOMAIN_OFFSET;
+      try {
+        subdomainOffset = JSON.parse(subdomainOffset);
+      } catch (error) {
+        console.error('Error parsing subdomain offset', subdomainOffset, error);
+      }
+      await this.express?.set?.(
+        'subdomain offset',
+        process.env.REST_API_PROPERTY_SUBDOMAIN_OFFSET.toLowerCase() == 'true'
+          ? true
+          : process.env.REST_API_PROPERTY_SUBDOMAIN_OFFSET.toLowerCase() ==
+            'false'
+          ? false
+          : subdomainOffset
+      );
+    }
+    if (process.env.REST_API_PROPERTY_TRUST_PROXY) {
+      let trustProxy = process.env.REST_API_PROPERTY_TRUST_PROXY;
+      try {
+        trustProxy = JSON.parse(trustProxy);
+      } catch (error) {
+        console.error('Error parsing trust proxy', trustProxy, error);
+      }
+      await this.express?.set?.(
+        'trust proxy',
+        process.env.REST_API_PROPERTY_TRUST_PROXY.toLowerCase() == 'true'
+          ? true
+          : process.env.REST_API_PROPERTY_TRUST_PROXY.toLowerCase() == 'false'
+          ? false
+          : trustProxy
+      );
+    }
+    if (process.env.REST_API_PROPERTY_JSONP_CALLBACK_NAME)
+      await this.express?.set?.(
+        'jsonp callback name',
+        process.env.REST_API_PROPERTY_JSONP_CALLBACK_NAME
+      );
     if (routes) await this.express?.use?.(routes);
     await this.express.listen(port);
     console.log(
